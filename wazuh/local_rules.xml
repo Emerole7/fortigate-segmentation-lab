@@ -1,0 +1,15 @@
+<!-- Custom rule: escalate FortiGate DMZ-to-LAN denies.
+     Vendor rule 81618 ("Traffic to be aware of") matches these logs at level 1,
+     below the default alert threshold of 3, so they never reach the dashboard. -->
+<group name="fortigate,local,">
+  <rule id="100200" level="10">
+    <if_sid>81618</if_sid>
+    <field name="srcintfrole">dmz</field>
+    <field name="dstintfrole">lan</field>
+    <action>deny</action>
+    <description>FortiGate: DMZ host $(srcip) tried to reach LAN host $(dstip) - possible lateral movement</description>
+    <mitre>
+      <id>T1021</id>
+    </mitre>
+  </rule>
+</group>

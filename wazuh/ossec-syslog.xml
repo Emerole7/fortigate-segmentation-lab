@@ -1,0 +1,11 @@
+<!-- Appended to /var/ossec/etc/ossec.conf on the Wazuh manager.
+     Accepts syslog only from the FortiGate LAN interface, only on the LAN NIC. -->
+<ossec_config>
+  <remote>
+    <connection>syslog</connection>
+    <port>514</port>
+    <protocol>udp</protocol>
+    <allowed-ips>10.10.10.254</allowed-ips>
+    <local_ip>10.10.10.50</local_ip>
+  </remote>
+</ossec_config>
